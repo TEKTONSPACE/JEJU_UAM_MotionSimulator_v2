@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Root>
+  <MotionSimulator>
+    <Device>
+      <IP>11</IP>
+    </Device>
+    <Device>
+      <IP>12</IP>
+    </Device>
+  </MotionSimulator>
+  <SystemSetting>
+    <Console>
+      <isVisible>1</isVisible>
+    </Console>
+  </SystemSetting>
+</Root>

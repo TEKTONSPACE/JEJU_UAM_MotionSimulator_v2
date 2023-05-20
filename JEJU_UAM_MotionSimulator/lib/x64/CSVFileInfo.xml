@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Root>
+  <MotionSimulator>
+    <CSVFile>
+      <FilePath>./MotionData/jungmun_completion.csv</FilePath>
+    </CSVFile>
+    <CSVFile>
+      <FilePath>./MotionData/sungsan_completion.csv</FilePath>
+    </CSVFile>
+  </MotionSimulator>
+</Root>

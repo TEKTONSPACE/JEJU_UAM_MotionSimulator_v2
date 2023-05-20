@@ -1,0 +1,7 @@
+C:\Users\hwkan\wkspaces\JEJU_UAM_MotionSimulator\lib\x64\JEJU_UAM_MotionSimulator.exe
+C:\Users\hwkan\wkspaces\JEJU_UAM_MotionSimulator\lib\x64\JEJU_UAM_MotionSimulator.pdb
+C:\Users\hwkan\wkspaces\JEJU_UAM_MotionSimulator\JEJU_UAM_MotionSimulator\obj\x64\Debug\JEJU_UAM_MotionSimulator.csproj.AssemblyReference.cache
+C:\Users\hwkan\wkspaces\JEJU_UAM_MotionSimulator\JEJU_UAM_MotionSimulator\obj\x64\Debug\JEJU_UAM_MotionSimulator.csproj.CoreCompileInputs.cache
+C:\Users\hwkan\wkspaces\JEJU_UAM_MotionSimulator\JEJU_UAM_MotionSimulator\obj\x64\Debug\JEJU_UAM_MotionSimulator.exe
+C:\Users\hwkan\wkspaces\JEJU_UAM_MotionSimulator\JEJU_UAM_MotionSimulator\obj\x64\Debug\JEJU_UAM_MotionSimulator.pdb
+C:\Users\hwkan\wkspaces\JEJU_UAM_MotionSimulator\lib\x64\JEJU_UAM_MotionSimulator.exe.config
