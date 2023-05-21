@@ -119,7 +119,7 @@ namespace JEJU_UAM_MotionSimulator
         {
             InnoML.imSourcePlay(currentMotionData.motionSource);
             isPlaying = true;
-            CheckDuration();
+            //CheckDuration();
         }
 
         public void StopMotionData()
