@@ -111,8 +111,6 @@ namespace JEJU_UAM_MotionSimulator
                 InnoML.imSetContext(motionSimulatorDevices[i].ImContext);
                 InnoML.imStop(MotionTypes.IM_DEVICE_MOVE_SETTLE);
             }
-
-            InnoML.imSetContext(0);
         }
 
         public string CheckDevicesConnection()

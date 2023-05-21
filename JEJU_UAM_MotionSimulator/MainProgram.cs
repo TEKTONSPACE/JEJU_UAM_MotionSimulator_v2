@@ -59,12 +59,12 @@ namespace JEJU_UAM_MotionSimulator
             for(int i =0; i< motionSimulatorSetting.motionSimulatorDevices.Length; i++)
             {
                 InnoML.imSetContext(motionSimulatorSetting.motionSimulatorDevices[i].ImContext);
-                IM_DIAGNOSTIC_AXIS_INFO[] descAxis = new IM_DIAGNOSTIC_AXIS_INFO[MotionTypes.IM_FORMAT_CHANNELS_DEFAULT];
-                int error = InnoML.imGetDiagnostic(descAxis, MotionTypes.IM_FORMAT_CHANNELS_DEFAULT);
-
-                if(error == 0)
+                while (true)
                 {
-                    while(true)
+                    IM_DIAGNOSTIC_AXIS_INFO[] descAxis = new IM_DIAGNOSTIC_AXIS_INFO[MotionTypes.IM_FORMAT_CHANNELS_DEFAULT];
+                    int error = InnoML.imGetDiagnostic(descAxis, MotionTypes.IM_FORMAT_CHANNELS_DEFAULT);
+
+                    if (error == 0)
                     {
                         if (descAxis[0].bBusy != 0 || descAxis[1].bBusy != 0 || descAxis[2].bBusy != 0)
                         {
@@ -74,23 +74,23 @@ namespace JEJU_UAM_MotionSimulator
                         else
                         {
                             Console.WriteLine($"Device {i} Axis Check Success : 0 - {descAxis[0].bBusy} 1 - {descAxis[1].bBusy} 2 - {descAxis[2].bBusy}");
+
+                            if (i == motionSimulatorSetting.motionSimulatorDevices.Length - 1)
+                            {
+                                Thread.Sleep(1000);
+                                namedPipeStreamer.SendMotionReadyMessage();
+                            }
+
                             break;
                         }
-                    }
 
-                    if(i == motionSimulatorSetting.motionSimulatorDevices.Length-1)
+                    }
+                    else
                     {
-                        Thread.Sleep(1000);
-                        namedPipeStreamer.SendMotionReadyMessage();
+                        Console.WriteLine($"Device Conntection Fail : error code {error}");
+                        return;
                     }
-
                 }
-                else
-                {
-                    Console.WriteLine($"Device Conntection Fail : error code {error}");
-                    break;
-                }
-
             }
         }
 
@@ -163,40 +163,36 @@ namespace JEJU_UAM_MotionSimulator
             for (int i = 0; i < motionSimulatorSetting.motionSimulatorDevices.Length; i++)
             {
                 InnoML.imSetContext(motionSimulatorSetting.motionSimulatorDevices[i].ImContext);
-                IM_DIAGNOSTIC_AXIS_INFO[] descAxis = new IM_DIAGNOSTIC_AXIS_INFO[MotionTypes.IM_FORMAT_CHANNELS_DEFAULT];
-                int error = InnoML.imGetDiagnostic(descAxis, MotionTypes.IM_FORMAT_CHANNELS_DEFAULT);
-
-                if (error == 0)
+                while (true)
                 {
-                    while (true)
+                    IM_DIAGNOSTIC_AXIS_INFO[] descAxis = new IM_DIAGNOSTIC_AXIS_INFO[MotionTypes.IM_FORMAT_CHANNELS_DEFAULT];
+                    int error = InnoML.imGetDiagnostic(descAxis, MotionTypes.IM_FORMAT_CHANNELS_DEFAULT);
+
+                    if (error == 0)
                     {
                         if (descAxis[0].bBusy != 0 || descAxis[1].bBusy != 0 || descAxis[2].bBusy != 0)
                         {
                             Console.WriteLine($"Device {i} Axis Check... : 0 - {descAxis[0].bBusy} 1 - {descAxis[1].bBusy} 2 - {descAxis[2].bBusy}");
+                            Thread.Sleep(1000);
                         }
                         else
                         {
                             Console.WriteLine($"Device {i} Axis Check Success : 0 - {descAxis[0].bBusy} 1 - {descAxis[1].bBusy} 2 - {descAxis[2].bBusy}");
+
                             break;
                         }
-                    }
 
-                    if (i == motionSimulatorSetting.motionSimulatorDevices.Length - 1)
+                    }
+                    else
                     {
-                        Thread.Sleep(1000);
-
-                        motionDataPlayer.FinalizeAllMotionData();
-                        motionSimulatorSetting.FinalizeAllDevice();
+                        Console.WriteLine($"Device Conntection Fail : error code {error}");
+                        return;
                     }
-
                 }
-                else
-                {
-                    Console.WriteLine($"Device Conntection Fail : error code {error}");
-                    break;
-                }
-
             }
+
+            motionDataPlayer.FinalizeAllMotionData();
+            motionSimulatorSetting.FinalizeAllDevice();
 
             //Console.ReadLine();
         }
