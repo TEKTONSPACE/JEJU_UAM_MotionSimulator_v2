@@ -33,9 +33,12 @@ namespace JEJU_UAM_MotionSimulator
 
         private XmlHandler xmlHandler;
 
+        private bool isPlaying;
+
 
         public MotionDataPlayer()
         {
+            isPlaying = false;
             LoadAllMotionData();
         }
 
@@ -115,12 +118,17 @@ namespace JEJU_UAM_MotionSimulator
         public void PlayMotionData()
         {
             InnoML.imSourcePlay(currentMotionData.motionSource);
+            isPlaying = true;
         }
 
         public void StopMotionData()
         {
-            InnoML.imSourceStop(currentMotionData.motionSource);
-            Console.WriteLine("Stop Motion Data End");
+            if(isPlaying)
+            {
+                InnoML.imSourceStop(currentMotionData.motionSource);
+                Console.WriteLine("Stop Motion Data End");
+                isPlaying = false;
+            }
         }
 
     }
