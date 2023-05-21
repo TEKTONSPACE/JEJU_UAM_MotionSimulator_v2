@@ -25,6 +25,7 @@ namespace JEJU_UAM_MotionSimulator
         const int SW_SHOW = 1; // 콘솔 보이기
 
         private static bool isNamedPipeConnected = false;
+        private static bool isFinalized = false;
 
         private static MotionSimulatorDevicesSetting motionSimulatorSetting;
         private static MotionDataPlayer motionDataPlayer;
@@ -94,6 +95,50 @@ namespace JEJU_UAM_MotionSimulator
             }
         }
 
+        public static void OnExit(object sender, EventArgs e)
+        {
+            if(!isFinalized)
+            {
+                motionDataPlayer.StopMotionData();
+                motionSimulatorSetting.OffAllDevice();
+
+                for (int i = 0; i < motionSimulatorSetting.motionSimulatorDevices.Length; i++)
+                {
+                    InnoML.imSetContext(motionSimulatorSetting.motionSimulatorDevices[i].ImContext);
+                    while (true)
+                    {
+                        IM_DIAGNOSTIC_AXIS_INFO[] descAxis = new IM_DIAGNOSTIC_AXIS_INFO[MotionTypes.IM_FORMAT_CHANNELS_DEFAULT];
+                        int error = InnoML.imGetDiagnostic(descAxis, MotionTypes.IM_FORMAT_CHANNELS_DEFAULT);
+
+                        if (error == 0)
+                        {
+                            if (descAxis[0].bBusy != 0 || descAxis[1].bBusy != 0 || descAxis[2].bBusy != 0)
+                            {
+                                //Console.WriteLine($"Device {i} Axis Check... : 0 - {descAxis[0].bBusy} 1 - {descAxis[1].bBusy} 2 - {descAxis[2].bBusy}");
+
+                                Thread.Sleep(1000);
+                            }
+                            else
+                            {
+                                Console.WriteLine($"Device {i} Axis Check Success : 0 - {descAxis[0].bBusy} 1 - {descAxis[1].bBusy} 2 - {descAxis[2].bBusy}");
+
+                                break;
+                            }
+
+                        }
+                        else
+                        {
+                            Console.WriteLine($"Device Conntection Fail : error code {error}");
+                            break;
+                        }
+                    }
+                }
+
+                motionDataPlayer.FinalizeAllMotionData();
+                motionSimulatorSetting.FinalizeAllDevice();
+            }
+        }
+
         public static void OnNamedPipeDisconnect()
         {
             isNamedPipeConnected = false;
@@ -137,6 +182,7 @@ namespace JEJU_UAM_MotionSimulator
 
         static void Main(string[] args)
         {
+            
             XmlHandler xmlHandler = new XmlHandler(Directory.GetCurrentDirectory() + "/DeviceInfo.xml");
             string isVisible = xmlHandler.ReadXmlNode("SystemSetting", "Console", "isVisible");
 
@@ -153,6 +199,8 @@ namespace JEJU_UAM_MotionSimulator
             }
 
             MainProgram mainProgram = new MainProgram();
+
+            AppDomain.CurrentDomain.ProcessExit += OnExit;
 
             //Named pipe 통신 시작
             namedPipeStreamer.OpenNamedPipe();
@@ -178,6 +226,7 @@ namespace JEJU_UAM_MotionSimulator
                         if (descAxis[0].bBusy != 0 || descAxis[1].bBusy != 0 || descAxis[2].bBusy != 0)
                         {
                             //Console.WriteLine($"Device {i} Axis Check... : 0 - {descAxis[0].bBusy} 1 - {descAxis[1].bBusy} 2 - {descAxis[2].bBusy}");
+                            
                             Thread.Sleep(1000);
                         }
                         else
@@ -191,7 +240,7 @@ namespace JEJU_UAM_MotionSimulator
                     else
                     {
                         Console.WriteLine($"Device Conntection Fail : error code {error}");
-                        return;
+                        break;
                     }
                 }
             }
@@ -199,6 +248,8 @@ namespace JEJU_UAM_MotionSimulator
             motionDataPlayer.FinalizeAllMotionData();
             motionSimulatorSetting.FinalizeAllDevice();
 
+
+            isFinalized = true;
             //Console.ReadLine();
         }
     }
