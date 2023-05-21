@@ -119,6 +119,7 @@ namespace JEJU_UAM_MotionSimulator
         {
             InnoML.imSourcePlay(currentMotionData.motionSource);
             isPlaying = true;
+            CheckDuration();
         }
 
         public void StopMotionData()
@@ -128,6 +129,19 @@ namespace JEJU_UAM_MotionSimulator
                 InnoML.imSourceStop(currentMotionData.motionSource);
                 Console.WriteLine("Stop Motion Data End");
                 isPlaying = false;
+            }
+        }
+
+        public void CheckDuration()
+        {
+            Int32 imbuffer = InnoML.imSourceGetBuffer(currentMotionData.motionSource);
+            Int32 totalDuration = InnoML.imBufferGetDuration(imbuffer);
+
+            while(InnoML.imSourceGetPosition(currentMotionData.motionSource) < totalDuration)
+            {
+                Console.WriteLine($"Play Time : {InnoML.imSourceGetPosition(currentMotionData.motionSource)} / {totalDuration}");
+                if (!isPlaying)
+                    break;
             }
         }
 
