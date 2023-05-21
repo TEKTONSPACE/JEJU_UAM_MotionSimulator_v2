@@ -68,7 +68,7 @@ namespace JEJU_UAM_MotionSimulator
                     {
                         if (descAxis[0].bBusy != 0 || descAxis[1].bBusy != 0 || descAxis[2].bBusy != 0)
                         {
-                            Console.WriteLine($"Device {i} Axis Check... : 0 - {descAxis[0].bBusy} 1 - {descAxis[1].bBusy} 2 - {descAxis[2].bBusy}");
+                            //Console.WriteLine($"Device {i} Axis Check... : 0 - {descAxis[0].bBusy} 1 - {descAxis[1].bBusy} 2 - {descAxis[2].bBusy}");
                             Thread.Sleep(1000);
                         }
                         else
@@ -177,7 +177,7 @@ namespace JEJU_UAM_MotionSimulator
                     {
                         if (descAxis[0].bBusy != 0 || descAxis[1].bBusy != 0 || descAxis[2].bBusy != 0)
                         {
-                            Console.WriteLine($"Device {i} Axis Check... : 0 - {descAxis[0].bBusy} 1 - {descAxis[1].bBusy} 2 - {descAxis[2].bBusy}");
+                            //Console.WriteLine($"Device {i} Axis Check... : 0 - {descAxis[0].bBusy} 1 - {descAxis[1].bBusy} 2 - {descAxis[2].bBusy}");
                             Thread.Sleep(1000);
                         }
                         else

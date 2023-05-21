@@ -37,7 +37,7 @@ namespace JEJU_UAM_MotionSimulator
 
         public void LoadMotionData()
         {
-            Console.WriteLine($"Load Motion Data : {SCVFilePath}");
+            //Console.WriteLine($"Load Motion Data : {SCVFilePath}");
             motionBuffer = InnoML.imLoadBuffer(SCVFilePath);
             motionSource = InnoML.imCreateSource(motionBuffer);
             duration = InnoML.imBufferGetDuration(motionBuffer);

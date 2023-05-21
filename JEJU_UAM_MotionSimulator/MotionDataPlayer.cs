@@ -44,7 +44,7 @@ namespace JEJU_UAM_MotionSimulator
 
         public void LoadAllMotionData()
         {
-            Console.WriteLine("Load All Motion Data");
+            //Console.WriteLine("Load All Motion Data");
 
             //xml로 csv 파일 경로 불러오기
             motionDataCSVFilePath = new List<string>();

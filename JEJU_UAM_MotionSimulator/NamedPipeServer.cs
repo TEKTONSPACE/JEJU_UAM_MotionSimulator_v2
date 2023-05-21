@@ -54,8 +54,9 @@ namespace JEJU_UAM_MotionSimulator
             while(pipeServerStream.IsConnected)
             {
                 string message = streamString.ReadString();
-                Console.WriteLine(message);
                 OnReceiveMessage?.Invoke(message);
+                //Console.WriteLine(message);
+
             }
         }
     }

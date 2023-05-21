@@ -165,7 +165,7 @@ namespace JEJU_UAM_MotionSimulator
                 // 모두 기재했을 경우
                 XmlNode valueNode = secondDepthNode.SelectSingleNode(valueNodeName);
 
-                Console.WriteLine(valueNode == null);
+                //Console.WriteLine(valueNode == null);
 
                 secondDepthNode.RemoveChild(valueNode);
                 xml.Save(xmlFilePath);

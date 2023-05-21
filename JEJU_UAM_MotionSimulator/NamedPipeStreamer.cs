@@ -100,7 +100,7 @@ namespace JEJU_UAM_MotionSimulator
         public void SendDeviceConnectionInfo(string deviceConnectionInfo)
         {
             namedPipeClient.SendMessage("DeviceConnection_"+ deviceConnectionInfo);
-            Console.WriteLine("DeviceConnection_" + deviceConnectionInfo);
+            //Console.WriteLine("DeviceConnection_" + deviceConnectionInfo);
         }
 
 
