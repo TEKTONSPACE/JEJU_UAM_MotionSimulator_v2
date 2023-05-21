@@ -168,6 +168,7 @@ namespace JEJU_UAM_MotionSimulator
             namedPipeStreamer.OnVideoPlay += OnPlayMotionData;
             namedPipeStreamer.OnVideoEnd += OnStopMotionData;
             namedPipeStreamer.OnDisconnect += OnNamedPipeDisconnect;
+            namedPipeStreamer.OnCurrentVideoTime += (millisecond) => motionDataPlayer.PauseMotion(millisecond);
 
             while(isNamedPipeConnected)
             {

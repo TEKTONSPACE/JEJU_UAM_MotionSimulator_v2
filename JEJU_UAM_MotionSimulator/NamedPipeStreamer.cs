@@ -14,6 +14,8 @@ namespace JEJU_UAM_MotionSimulator
         public Action OnVideoEnd;
         public Action OnDisconnect;
 
+        public Action<int> OnCurrentVideoTime;
+
         private const string serverPipeName = "JejuUAMProject-CMS-Message";
         private const string clientPipeName = "JejuUAMProject-MotionSimulator-Message";
 
@@ -89,6 +91,17 @@ namespace JEJU_UAM_MotionSimulator
                     namedPipeClient.ClientClose();
                     OnDisconnect?.Invoke();
                     break;
+
+                default:
+                    //현재 시간 싱크
+                    string[] splitMessage = message.Split('_');
+                    if (splitMessage[0] == "CurrentTime")
+                    {
+                        Int32 milliseconds = int.Parse(splitMessage[1]);
+                        OnCurrentVideoTime?.Invoke(milliseconds);
+                    }
+                    break;
+
             }
         }
 

@@ -132,6 +132,20 @@ namespace JEJU_UAM_MotionSimulator
             }
         }
 
+        public void PauseMotion(Int32 millisecond)
+        {
+            Int32 timeDiff = Math.Abs(InnoML.imSourceGetPosition(currentMotionData.motionSource) - millisecond);
+            Console.WriteLine($"Pause motion ${timeDiff}");
+            InnoML.imSourcePause(currentMotionData.motionSource, 1);
+            Console.WriteLine("pause...");
+            Thread.Sleep(timeDiff);
+            if(isPlaying)
+            {
+                Console.WriteLine("resume");
+                InnoML.imSourcePause(currentMotionData.motionSource, 0);
+            }
+        }
+
         public void CheckDuration()
         {
             Int32 imbuffer = InnoML.imSourceGetBuffer(currentMotionData.motionSource);
