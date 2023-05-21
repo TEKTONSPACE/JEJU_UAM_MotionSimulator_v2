@@ -147,6 +147,7 @@ namespace JEJU_UAM_MotionSimulator
         public static void OnStopMotionData()
         {
             motionDataPlayer.StopMotionData();
+            Thread.Sleep(500);
             motionSimulatorSetting.OffAllDevice();
         }
 
