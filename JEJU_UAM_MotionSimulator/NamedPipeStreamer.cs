@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 
@@ -26,6 +27,18 @@ namespace JEJU_UAM_MotionSimulator
         {
             namedPipeClient = new NamedPipeClient(clientPipeName);
             namedPipeServer = new NamedPipeServer(serverPipeName);
+        }
+
+        public bool IsConnected()
+        {
+            if (namedPipeClient.isConnected() && namedPipeServer.isConnected())
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public void OpenNamedPipe()

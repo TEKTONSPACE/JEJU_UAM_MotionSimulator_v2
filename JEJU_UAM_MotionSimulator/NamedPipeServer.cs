@@ -24,6 +24,11 @@ namespace JEJU_UAM_MotionSimulator
             this.pipeDirection = pipeDirection;
         }
 
+        public bool isConnected()
+        {
+            return pipeServerStream.IsConnected;
+        }
+
         public void ServerOpen()
         {
             Console.WriteLine("Named pipe server : Waiting for client connect....");

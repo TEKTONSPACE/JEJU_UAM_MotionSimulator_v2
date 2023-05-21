@@ -126,7 +126,12 @@ namespace JEJU_UAM_MotionSimulator
 
             while(isNamedPipeConnected)
             {
-                Thread.Sleep(100);
+                Thread.Sleep(1000);
+                if (!namedPipeStreamer.IsConnected())
+                {
+                    Console.WriteLine("named pipe is disconnect without message");
+                    break;
+                }
             }
         }
 

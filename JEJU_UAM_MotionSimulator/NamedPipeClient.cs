@@ -24,6 +24,11 @@ namespace JEJU_UAM_MotionSimulator
             this.tokenImpersonationLevel= tokenImpersonationLeve;
         }
 
+        public bool isConnected()
+        {
+            return pipeClientStream.IsConnected;
+        }
+
         public void ClientOpen()
         {
             pipeClientStream = new NamedPipeClientStream(".", pipeName, pipeDirection, pipeOption,
