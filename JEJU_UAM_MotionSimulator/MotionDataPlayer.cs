@@ -55,7 +55,7 @@ namespace JEJU_UAM_MotionSimulator
             if (motionDataCSVFilePath.Count == 0)
             {
                 //영상 1
-                string filePath = "./MotionData/waveform_sine.csv";
+                string filePath = "./MotionData/jungmun_completion.csv";
                 //해당 경로에 csv 파일이 있으면 경로 저장
                 if (File.Exists(filePath))
                 {
@@ -68,7 +68,7 @@ namespace JEJU_UAM_MotionSimulator
                 }
 
                 //영상 2
-                filePath = "./MotionData/MotionData_Vib_5s.csv";
+                filePath = "./ MotionData / sungsan_completion.csv";
 
                 if (File.Exists(filePath))
                 {

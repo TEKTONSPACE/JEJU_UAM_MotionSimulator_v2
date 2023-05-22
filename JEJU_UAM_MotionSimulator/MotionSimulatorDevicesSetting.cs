@@ -92,6 +92,8 @@ namespace JEJU_UAM_MotionSimulator
         {
             InnoML.imSetContext(0);
 
+            
+
             for (int i = motionSimulatorDevices.Length - 1; i >= 0; i--)
             {
                 InnoML.imSetContext(motionSimulatorDevices[i].ImContext);
