@@ -8,3 +8,10 @@ C:\Users\Tekton_Dev\Downloads\JEJU_UAM_MotionSimulator_InnoML (1)\JEJU_UAM_Motio
 C:\Users\Tekton_Dev\Downloads\JEJU_UAM_MotionSimulator_InnoML (1)\JEJU_UAM_MotionSimulator\lib\x64\JEJU_UAM_MotionSimulator.exe.config
 C:\Users\Tekton_Dev\Downloads\JEJU_UAM_MotionSimulator_InnoML (1)\JEJU_UAM_MotionSimulator\lib\x64\JEJU_UAM_MotionSimulator.exe
 C:\Users\Tekton_Dev\Downloads\JEJU_UAM_MotionSimulator_InnoML (1)\JEJU_UAM_MotionSimulator\lib\x64\JEJU_UAM_MotionSimulator.pdb
+C:\Users\Tekton_Dev\Documents\GitHub\JEJU_UAM_MotionSimulator_v2\JEJU_UAM_MotionSimulator\lib\x64\JEJU_UAM_MotionSimulator.exe.config
+C:\Users\Tekton_Dev\Documents\GitHub\JEJU_UAM_MotionSimulator_v2\JEJU_UAM_MotionSimulator\lib\x64\JEJU_UAM_MotionSimulator.exe
+C:\Users\Tekton_Dev\Documents\GitHub\JEJU_UAM_MotionSimulator_v2\JEJU_UAM_MotionSimulator\lib\x64\JEJU_UAM_MotionSimulator.pdb
+C:\Users\Tekton_Dev\Documents\GitHub\JEJU_UAM_MotionSimulator_v2\JEJU_UAM_MotionSimulator\obj\Debug\JEJU_UAM_MotionSimulator.csproj.AssemblyReference.cache
+C:\Users\Tekton_Dev\Documents\GitHub\JEJU_UAM_MotionSimulator_v2\JEJU_UAM_MotionSimulator\obj\Debug\JEJU_UAM_MotionSimulator.csproj.CoreCompileInputs.cache
+C:\Users\Tekton_Dev\Documents\GitHub\JEJU_UAM_MotionSimulator_v2\JEJU_UAM_MotionSimulator\obj\Debug\JEJU_UAM_MotionSimulator.exe
+C:\Users\Tekton_Dev\Documents\GitHub\JEJU_UAM_MotionSimulator_v2\JEJU_UAM_MotionSimulator\obj\Debug\JEJU_UAM_MotionSimulator.pdb

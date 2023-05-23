@@ -10,6 +10,7 @@ using InnoMotion;
 using InnoMotion.Controller_IMotion;
 using InnoMotion.Controller_InnoML;
 using InnoMotion.Types;
+using System.Diagnostics;
 
 namespace JEJU_UAM_MotionSimulator
 {
@@ -184,6 +185,10 @@ namespace JEJU_UAM_MotionSimulator
 
         static void Main(string[] args)
         {
+
+            Process currentProcess = Process.GetCurrentProcess();
+            currentProcess.PriorityBoostEnabled = true;
+            currentProcess.PriorityClass = ProcessPriorityClass.RealTime;
             
             XmlHandler xmlHandler = new XmlHandler(Directory.GetCurrentDirectory() + "/DeviceInfo.xml");
             string isVisible = xmlHandler.ReadXmlNode("SystemSetting", "Console", "isVisible");
